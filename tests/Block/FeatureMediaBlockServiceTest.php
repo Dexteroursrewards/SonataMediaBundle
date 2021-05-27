@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\MediaBundle\Tests\Block;
 
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
+use Sonata\MediaBundle\Admin\BaseMediaAdmin;
 use Sonata\MediaBundle\Block\FeatureMediaBlockService;
 use Sonata\MediaBundle\Model\GalleryManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -28,8 +29,8 @@ class FeatureMediaBlockServiceTest extends BlockServiceTestCase
 
         $this->blockService = new FeatureMediaBlockService(
             $this->twig,
-            $this->createStub(ContainerInterface::class),
-            $this->createStub(GalleryManagerInterface::class)
+            $this->createStub(GalleryManagerInterface::class),
+            $this->createStub(BaseMediaAdmin::class)
         );
     }
 

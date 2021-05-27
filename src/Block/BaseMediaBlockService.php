@@ -51,13 +51,15 @@ abstract class BaseMediaBlockService extends AbstractBlockService implements Edi
 
     public function __construct(
         Environment $twig,
-        ContainerInterface $container,
-        ManagerInterface $mediaManager
+        ManagerInterface $mediaManager,
+        BaseMediaAdmin $mediaAdmin
     ) {
         parent::__construct($twig);
 
         $this->mediaManager = $mediaManager;
-        $this->container = $container;
+
+        $this->mediaAdmin = $mediaAdmin;
+
     }
 
     public function getMediaPool(): Pool
@@ -67,10 +69,6 @@ abstract class BaseMediaBlockService extends AbstractBlockService implements Edi
 
     public function getMediaAdmin(): BaseMediaAdmin
     {
-        if (!$this->mediaAdmin) {
-            $this->mediaAdmin = $this->container->get('sonata.media.admin.media');
-        }
-
         return $this->mediaAdmin;
     }
 
